@@ -1,0 +1,13 @@
+taco:
+  orders:
+    ordersListLength: 20
+spring:
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    initialization-mode: always
+logging:
+  level:
+    tacos: DEBUG

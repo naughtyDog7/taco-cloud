@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "taco.orders.ordersListLength",
+      "type": "java.lang.String",
+      "description": "Sets the max number of orders displayed."
+    }
+  ]
+}
