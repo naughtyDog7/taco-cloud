@@ -1,4 +1,16 @@
 spring:
+  data:
+    rest:
+      base-path: /api
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+taco:
+  orders:
+    ordersListLength: 12
+server:
+  port: 8081
