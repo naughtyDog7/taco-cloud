@@ -29,20 +29,6 @@ public class Ingredient {
         WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
     }
 
-//    @ToString.Exclude
-//    @ManyToMany(cascade = {CascadeType.ALL})
-//    @JoinTable(
-//            name = "taco_ingredients",
-//            joinColumns =  {@JoinColumn(name = "ingredient_id", referencedColumnName = "id")},
-//            inverseJoinColumns = { @JoinColumn(name = "taco_id", referencedColumnName = "id")}
-//    )
-//    private List<Taco> tacos = new ArrayList<>();
-//
-//    public void addTaco(Taco taco) {
-//        tacos.add(taco);
-//    }
-
-
     @Converter
     public static class TypeAttributeConverter implements AttributeConverter<Type, String> {
         @Override
