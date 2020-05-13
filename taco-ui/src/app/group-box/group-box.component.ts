@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./group-box.component.css']
 })
 export class GroupBoxComponent implements OnInit {
-  // tslint:disable-next-line:ban-types
+
   @Input() title: String;
 
   constructor() { }

@@ -8,7 +8,7 @@ import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.hateoas.server.RepresentationModelProcessor;
 
 @Configuration
-public class RestConfig {
+public class RestConfig{
 
     @Bean
     public RepresentationModelProcessor<CollectionModel<Taco>> tacoProcessor(EntityLinks links) {

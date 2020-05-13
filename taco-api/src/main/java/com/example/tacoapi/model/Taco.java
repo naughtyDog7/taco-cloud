@@ -9,7 +9,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -34,13 +34,14 @@ public class Taco {
 
     @ToString.Exclude
     @ManyToMany(targetEntity = Ingredient.class)
+    @Size(min = 1, message = "At least one ingredient should be chosen")
     private List<Ingredient> ingredients;
 
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @PrePersist
     void createdAt() {
-        createdAt = new Date();
+        createdAt = LocalDateTime.now();
     }
 
     public double totalPrice() {

@@ -8,7 +8,7 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -19,7 +19,7 @@ public class TacoModel extends RepresentationModel<TacoModel> {
             assembler = new IngredientModelAssembler();
 
     private final String name;
-    private final Date createdAt;
+    private final LocalDateTime createdAt;
     private final CollectionModel<IngredientModel> ingredients;
 
     public TacoModel(Taco taco) {

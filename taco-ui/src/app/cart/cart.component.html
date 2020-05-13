@@ -1,0 +1,101 @@
+<app-cloud-title>Order your taco creations</app-cloud-title>
+
+<p>You've crafted your mouthwatering taco masterpieces. Now, just imagine those
+  creations appearing before you at home...or work...or wherever you are!</p>
+
+<p *ngIf="(cartItems.length == 0)"><b>There are no tacos currently in your cart.
+  <a [routerLink]="['../design']">Create one now</a> or choose a
+  <a [routerLink]="['../recents']">recently created taco</a>.</b></p>
+
+<div *ngIf="(cartItems.length > 0)">
+  <p>Here are your latest taco designs. Just say the
+    word and we'll set them on a cloud aloft to you!</p>
+
+  <div class="groupBox groupBoxFull">
+    <div class="groupBoxTitle">Here are my tacos...</div>
+    <div class="groupBoxContent">
+      <table border="1" width="90%">
+        <thead>
+        <tr>
+          <td>Qty</td>
+          <td>Name</td>
+          <td>Description</td>
+          <td>Price</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>
+            <select [(ngModel)]="item.quantity">
+              <option value="0">Remove</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </td>
+          <td>The "<span class="caps">{{item.taco.name}}</span>"</td>
+          <td>
+            <ul class="commalist">
+              <li *ngFor="let ingredient of item.taco.ingredients | nonWraps">{{ingredient.name}}</li>
+            </ul>
+            <span *ngIf="(item.taco.ingredients | wraps)?.length > 0">
+                    <span>wrapped in</span>
+                  <ul class="commalist">
+                      <li *ngFor="let ingredient of item.taco.ingredients | wraps">{{ingredient.name}}</li>
+                  </ul>
+                </span>
+            <span *ngIf="(item.taco.ingredients | wraps)?.length == 0">in a bowl</span>
+          </td>
+          <td align="right">{{4.99 * item.quantity | currency}}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="3" align="right">Total:</td>
+          <td align="right"><span>{{cartTotal | currency}}</span></td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="groupBox groupBoxHalf">
+      <div class="groupBoxTitle">Deliver them to...</div>
+      <div class="groupBoxContent">
+        <label for="deliveryName">Name: </label>
+        <input type="text" [(ngModel)]="model.name" name="deliveryName" id="deliveryName" size="40"/>
+        <br/>
+
+        <label for="deliveryStreet">Street address: </label>
+        <input type="text" [(ngModel)]="model.street" name="deliveryStreet" id="deliveryStreet" size="40"/>
+        <br/>
+
+        <label for="deliveryCity">City / State: </label>
+        <input type="text" [(ngModel)]="model.city" name="deliveryCity" id="deliveryCity" size="30"/>
+        <br/>
+      </div>
+    </div>
+
+    <div class="groupBox groupBoxHalf">
+      <div class="groupBoxTitle">Here's how I'll pay...</div>
+      <div class="groupBoxContent">
+        <label for="ccNumber">Credit Card #: </label>
+        <input type="text" [(ngModel)]="model.creditCardNum" name="ccNumber" id="ccNumber"/>
+        <br/>
+      </div>
+    </div>
+
+    <br/>
+
+    <app-big-button label="Submit Order"></app-big-button>
+    <!-- <input type="submit" value="Submit order"/> -->
+  </form>
+</div>

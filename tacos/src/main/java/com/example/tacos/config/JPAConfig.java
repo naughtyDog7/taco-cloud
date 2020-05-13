@@ -36,7 +36,7 @@ public class JPAConfig {
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/taco_cloud");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/taco_cloud?serverTimezone=UTC");
         dataSource.setUsername("root");
         dataSource.setPassword("Lutfulla1900");
         return dataSource;

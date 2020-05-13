@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Data
 @Entity
@@ -27,23 +28,10 @@ public class Taco {
     @Transient
     private List<String> ingredients;
 
-    //    @ManyToMany(mappedBy = "tacos")
     @ToString.Exclude
     @ManyToMany(targetEntity = Ingredient.class)
     private List<Ingredient> ingredientsList;
 
-//    @ToString.Exclude
-//    @ManyToMany(cascade = {CascadeType.ALL})
-//    @JoinTable (
-//            name = "taco_orders",
-//            joinColumns = {@JoinColumn(name = "taco_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "order_id")}
-//    )
-//    private List<Order> orders = new ArrayList<>();
-//
-//    public void addOrder(Order order) {
-//        orders.add(order);
-//    }
 
     private Date createdAt;
 
@@ -54,7 +42,7 @@ public class Taco {
 
     public double totalPrice() {
         return Double.parseDouble(
-                String.format("%.2f",
+                String.format(Locale.US, "%.2f",
                         ingredientsList
                                 .stream()
                                 .mapToDouble(Ingredient::getPrice)

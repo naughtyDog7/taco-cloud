@@ -10,6 +10,7 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Data
 @Entity
@@ -44,7 +45,7 @@ public class Order {
 
     public double totalPrice() {
         return Double.parseDouble(
-                String.format("%.2f",
+                String.format(Locale.US,"%.2f",
                         tacos
                                 .stream()
                                 .mapToDouble(Taco::totalPrice)
