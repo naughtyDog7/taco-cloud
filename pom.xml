@@ -19,6 +19,8 @@
     <modules>
         <module>tacos</module>
         <module>taco-api</module>
+        <module>taco-producer</module>
+        <module>taco-consumer</module>
     </modules>
 
     <dependencies>
