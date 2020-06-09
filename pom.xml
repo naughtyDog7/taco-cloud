@@ -21,6 +21,7 @@
         <module>taco-api</module>
         <module>taco-producer</module>
         <module>taco-consumer</module>
+        <module>taco-email</module>
     </modules>
 
     <dependencies>

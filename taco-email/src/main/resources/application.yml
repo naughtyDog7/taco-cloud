@@ -1,0 +1,10 @@
+tacocloud:
+  email:
+    host: imap.gmail.com:993
+    mailbox: INBOX
+    username: titupoy666@gmail.com
+    password: hbghbjxterqrsams
+    pollRate: 30000
+  api:
+    orderUrl: http://localhost:8081/api/orders
+    ingredientUrl: http://localhost:8081/api/ingredients/idNames
